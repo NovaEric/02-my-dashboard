@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
 import { BsDice6, BsUiChecksGrid, BsCodeSlash } from "react-icons/bs";
-import { SidebarMenuItem } from '.';
-import { SidebarMenuItemProps } from './SidebarMenuItem';
+import { GiPokecog } from "react-icons/gi";
+import { SidebarMenuItem, SidebarMenuItemProps } from './SidebarMenuItem';
 
 
 const menuItems: SidebarMenuItemProps[] = [
@@ -17,12 +17,18 @@ const menuItems: SidebarMenuItemProps[] = [
         icon: <BsDice6 size={40} />,
         subtitle: 'Client Side Component',
         path: '/dashboard/counter'
+    },
+    {
+        title: 'Pokémons',
+        icon: <GiPokecog size={40} />,
+        subtitle: 'Server Side Component',
+        path: '/dashboard/pokemons'
     }
 ];
 
 export const Sidebar = () => {
     return (
-        <div id="menu" style={{width: '400px'}} className="bg-gray-900 min-h-screen z-10 text-slate-300 w-64 left-0 h-screen overflow-y-scroll">
+        <div id="menu" style={{width: '400px'}} className="bg-gray-900 min-h-screen z-10 text-slate-300 w-64 left-0">
             <div id="logo" className="my-4 px-6">
                 <h1 className="flex items-center text-lg md:text-2xl font-bold text-white">
                     <BsCodeSlash className='mr-2' />
