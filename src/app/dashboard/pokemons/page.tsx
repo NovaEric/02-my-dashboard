@@ -3,6 +3,11 @@ import { IPokemons, IPokemonPagination } from '@/interfaces';
 import { PokemonGrid } from '@/components';
 
 
+export const metadata = {
+    title: 'Pokemon List',
+    description: 'This is the Pokemons List Page'
+}
+
 const getPokemons = async (limit = 20, offset = 0): Promise<IPokemons[]> => {
 
     const data: IPokemonPagination = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`).then(res => res.json());
@@ -15,6 +20,7 @@ const getPokemons = async (limit = 20, offset = 0): Promise<IPokemons[]> => {
     return pokemons;
 
 }
+
 
 export default async function PokemonsPage() {
 

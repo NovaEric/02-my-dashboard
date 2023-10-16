@@ -1,16 +1,21 @@
 import React from 'react';
-import { IPokemon } from '@/interfaces';
+import { IPokemon, IPokemonPagination } from '@/interfaces';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
+interface Props {
+  params: { name: string }
+}
 
-const getPokemon = async (id: string): Promise<IPokemon> => {
+const getPokemon = async (name: string): Promise<IPokemon> => {
 
   try {
 
-    const pokemon: IPokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
-      cache: 'force-cache'//TODO change it later
+    const pokemon: IPokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`, {
+      next: {
+        revalidate: 60 * 60 * 30 * 6
+      }
     }).then(res => res.json());
 
     return pokemon;
@@ -21,15 +26,26 @@ const getPokemon = async (id: string): Promise<IPokemon> => {
 
 }
 
-interface Props {
-  params: { id: string }
+// Only on build time
+export async function generateStaticParams() {
+  
+  const data: IPokemonPagination = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=350`).then(res => res.json());
+
+  const staticPokemons = data.results.map(pokemon => ({
+      name: pokemon.name
+  }));
+
+  return staticPokemons.map( p => ({
+    name: p.name
+  }))
+  
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   try {
 
-    const { id, name } = await getPokemon(params.id);
+    const { id, name } = await getPokemon(params.name);
 
     return {
       title: `${name} - #${id}`,
@@ -46,7 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PokemonPage({ params }: Props) {
 
-  const pokemon = await getPokemon(params.id);
+  const pokemon = await getPokemon(params.name);
 
   return (
     <div className="flex mt-5 flex-col items-center text-slate-800">
