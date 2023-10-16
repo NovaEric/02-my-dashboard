@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { BsDice6, BsUiChecksGrid, BsCodeSlash } from "react-icons/bs";
+import { BsDice6, BsUiChecksGrid, BsCodeSlash, BsHeart } from "react-icons/bs";
 import { GiPokecog } from "react-icons/gi";
 import { SidebarMenuItem, SidebarMenuItemProps } from './SidebarMenuItem';
 
@@ -23,6 +23,12 @@ const menuItems: SidebarMenuItemProps[] = [
         icon: <GiPokecog size={40} />,
         subtitle: 'Server Side Component',
         path: '/dashboard/pokemons'
+    },
+    {
+        title: 'Favorites',
+        icon: <BsHeart size={40} />,
+        subtitle: 'Global State',
+        path: '/dashboard/favorites'
     }
 ];
 
