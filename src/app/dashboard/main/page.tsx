@@ -1,4 +1,10 @@
-import { SimpleWidget } from "@/components"
+import { SimpleWidget } from "@/components";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Dashboard',
+  description: 'SEO dashboard title'
+}
 
 export default function MainPage() {
   return (
