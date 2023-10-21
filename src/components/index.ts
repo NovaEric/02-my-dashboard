@@ -1,5 +1,5 @@
 
-export { Sidebar } from './Sidebar';
+export { Sidebar } from './sidebar/Sidebar';
 export { CartCounter } from './shopping-cart/CartCounter';
 export { PokemonGrid } from './pokemons/PokemonGrid';
-export { SimpleWidget } from './SimpleWidget';
+export { SimpleWidget } from './dashboard/SimpleWidget';
