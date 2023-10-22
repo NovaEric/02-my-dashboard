@@ -1,7 +1,7 @@
 'use client';
+import React from 'react';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { addOne, substractOne } from '@/store/counter/counterSlice';
-import React, { useState } from 'react';
 import { BsFillCaretLeftSquareFill, BsFillCaretRightSquareFill } from 'react-icons/bs';
 
 
