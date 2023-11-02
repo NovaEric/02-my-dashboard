@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { IPokemons } from '@/interfaces';
 import { PokemonCard } from './PokemonCard';
 

@@ -1,5 +1,4 @@
-import React from 'react';
-import { PokemonGrid } from '@/components';
+import { FavoritePokemons } from '@/components';
 
 
 export const metadata = {
@@ -17,7 +16,7 @@ export default async function PokemonsPage() {
             <strong className='bg-yellow-200 text-4xl no-underline ms-5'> Global State </strong>
             </div>
             
-            <PokemonGrid pokemons={ [] } />
+            <FavoritePokemons/>
         </div>
     )
 }

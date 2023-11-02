@@ -5,8 +5,15 @@ interface PokemonState {
     [key: string]: IPokemons
 }
 
+const getInitialState = (): PokemonState => {
+  return JSON.parse( localStorage.getItem('favorite-pokemons') ?? '{}')
+}
+
 const initialState: PokemonState = {
-    '1': { id: '1', name: 'bulbasaur'}
+    ...getInitialState()
+    // '1': { id: '1', name: 'bulbasaur'},
+    // '3': { id: '3', name: 'venusaur'},
+    // '5': { id: '5', name: 'charmeleon'}
 }
 
 const pokemonSlice = createSlice({
@@ -23,6 +30,9 @@ const pokemonSlice = createSlice({
       }
 
       state[id] = action.payload;
+
+      //TODO: Not to do in Redux
+      localStorage.setItem('favorite-pokemons', JSON.stringify(state));
 
     }
   }
