@@ -40,7 +40,6 @@ jobs:
           npm ci
           npm install
           npm run build
-          npm start
 
 # Please do not touch the following action
       - name: Store deployment content
